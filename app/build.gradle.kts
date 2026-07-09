@@ -12,19 +12,25 @@ android {
 
     defaultConfig {
         applicationId = "me.june8th.euet"
-        minSdk = 32
+        minSdk = 34
         targetSdk = 37
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig = signingConfigs.getByName("debug")
+        multiDexEnabled = true
     }
 
     buildTypes {
         release {
+            versionNameSuffix = "-release"
             optimization {
                 enable = false
             }
+        }
+        getByName("debug") {
+            versionNameSuffix = "-debug"
         }
     }
     compileOptions {
