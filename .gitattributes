@@ -1,4 +1,27 @@
-* text eol=lf
+# Let Git auto-detect binaries instead of forcing `text` on every file. A bare
+# `* text eol=lf` line-ending-normalizes binary assets on checkout, which
+# silently corrupts them (this broke the app icon PNGs in the iOS repo and only
+# surfaced in CI, where the build works from a fresh checkout).
+* text=auto eol=lf
 *.bat text eol=crlf
-*.jar binary
 
+# Binary assets — never line-ending normalized.
+*.jar   binary
+*.png   binary
+*.webp  binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.pdf   binary
+*.ico   binary
+*.ttf   binary
+*.otf   binary
+*.zip   binary
+*.apk   binary
+*.aab   binary
+*.aar   binary
+*.so    binary
+*.keystore binary
+*.jks   binary
+*.mp3   binary
+*.mp4   binary
