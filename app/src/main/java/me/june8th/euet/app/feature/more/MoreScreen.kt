@@ -36,21 +36,31 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.annotation.StringRes
+import me.june8th.euet.R
+import me.june8th.euet.app.designsystem.theme.EUetTheme
 import me.june8th.euet.app.navigation.Route
 
-private data class MoreItem(val label: String, val subtitle: String, val icon: ImageVector, val route: Any)
+private data class MoreItem(
+    @StringRes val labelRes: Int,
+    @StringRes val subtitleRes: Int,
+    val icon: ImageVector,
+    val route: Any,
+)
 
 private val moreItems = listOf(
-    MoreItem("Profile", "Your student information", Icons.Rounded.AccountCircle, Route.Profile),
-    MoreItem("Exams", "Schedule, rooms & seats", Icons.Rounded.EventNote, Route.Exams),
-    MoreItem("Notifications", "Announcements & news", Icons.Rounded.Notifications, Route.Notifications),
-    MoreItem("Tuition", "Bills & payment status", Icons.Rounded.CreditCard, Route.Tuition),
-    MoreItem("Canvas", "Courses & assignments", Icons.Rounded.School, Route.Canvas),
-    MoreItem("Training points", "Conduct & activity score", Icons.Rounded.WorkspacePremium, Route.Training),
-    MoreItem("Registration", "Course registration", Icons.Rounded.EditCalendar, Route.Registration),
-    MoreItem("Documents", "Syllabus & forms", Icons.Rounded.Description, Route.Documents),
-    MoreItem("Settings", "App preferences", Icons.Rounded.Settings, Route.Settings),
+    MoreItem(R.string.title_profile, R.string.more_profile_subtitle, Icons.Rounded.AccountCircle, Route.Profile),
+    MoreItem(R.string.title_exams, R.string.more_exams_subtitle, Icons.Rounded.EventNote, Route.Exams),
+    MoreItem(R.string.title_notifications, R.string.more_notifications_subtitle, Icons.Rounded.Notifications, Route.Notifications),
+    MoreItem(R.string.title_tuition, R.string.more_tuition_subtitle, Icons.Rounded.CreditCard, Route.Tuition),
+    MoreItem(R.string.title_canvas, R.string.more_canvas_subtitle, Icons.Rounded.School, Route.Canvas),
+    MoreItem(R.string.title_training, R.string.more_training_subtitle, Icons.Rounded.WorkspacePremium, Route.Training),
+    MoreItem(R.string.title_registration, R.string.more_registration_subtitle, Icons.Rounded.EditCalendar, Route.Registration),
+    MoreItem(R.string.title_documents, R.string.more_documents_subtitle, Icons.Rounded.Description, Route.Documents),
+    MoreItem(R.string.title_settings, R.string.more_settings_subtitle, Icons.Rounded.Settings, Route.Settings),
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -59,7 +69,12 @@ fun MoreScreen(onNavigate: (Any) -> Unit, contentPadding: PaddingValues) {
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = { LargeTopAppBar(title = { Text("More") }, scrollBehavior = scrollBehavior) },
+        topBar = {
+            LargeTopAppBar(
+                title = { Text(stringResource(R.string.title_more)) },
+                scrollBehavior = scrollBehavior,
+            )
+        },
     ) { innerPadding ->
         LazyColumn(
             contentPadding = PaddingValues(
@@ -105,9 +120,9 @@ private fun MoreRow(item: MoreItem, onClick: () -> Unit) {
                 }
             }
             androidx.compose.foundation.layout.Column(Modifier.padding(start = 16.dp).width(0.dp).weight(1f)) {
-                Text(item.label, style = MaterialTheme.typography.titleMedium)
+                Text(stringResource(item.labelRes), style = MaterialTheme.typography.titleMedium)
                 Text(
-                    item.subtitle,
+                    stringResource(item.subtitleRes),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
@@ -118,5 +133,15 @@ private fun MoreRow(item: MoreItem, onClick: () -> Unit) {
                 tint = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         }
+    }
+}
+
+// --- Previews ---
+
+@Preview(locale = "vi", showBackground = true)
+@Composable
+private fun MorePreview() {
+    EUetTheme {
+        MoreScreen(onNavigate = {}, contentPadding = PaddingValues())
     }
 }

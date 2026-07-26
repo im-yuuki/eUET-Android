@@ -90,6 +90,9 @@ dependencies {
     // Persistence
     implementation(libs.datastore.preferences)
 
+    // Custom Tabs (open invoices / syllabus PDFs in-app)
+    implementation(libs.browser)
+
     // Coroutines
     implementation(libs.coroutines.android)
 

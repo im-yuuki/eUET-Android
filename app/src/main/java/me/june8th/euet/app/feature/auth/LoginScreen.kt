@@ -12,12 +12,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -27,12 +25,18 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import me.june8th.euet.R
+import me.june8th.euet.app.common.errorMessage
 import me.june8th.euet.app.designsystem.component.ErrorState
+import me.june8th.euet.app.designsystem.theme.EUetTheme
 import me.june8th.euet.app.di.euetViewModel
+import me.june8th.euet.core.common.ErrorKind
 
 private const val LOGIN_URL = "https://studenthub.uet.edu.vn/"
 
@@ -41,10 +45,15 @@ private const val DESKTOP_UA =
     "Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) " +
         "Chrome/126.0.0.0 Mobile Safari/537.36"
 
-@OptIn(ExperimentalMaterial3Api::class)
+/**
+ * StudentHub sign-in: loads the portal in a web view and captures the bearer token its own API
+ * calls carry. Chrome (title bar / back) is supplied by [SignInScreen].
+ */
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun LoginScreen(
     onLoggedIn: () -> Unit,
+    modifier: Modifier = Modifier,
     viewModel: LoginViewModel = euetViewModel { LoginViewModel(it.authRepository) },
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
@@ -53,32 +62,35 @@ fun LoginScreen(
         if (state is LoginUiState.Success) onLoggedIn()
     }
 
-    Scaffold(
-        topBar = { TopAppBar(title = { Text("Sign in to eUET") }) },
-    ) { padding ->
-        Box(Modifier.fillMaxSize().padding(padding)) {
-            when (val s = state) {
-                is LoginUiState.Error -> ErrorState(s.message, onRetry = viewModel::retry)
-                else -> {
-                    LoginWebView(onToken = viewModel::onTokenCaptured)
-                    if (s is LoginUiState.Verifying) {
-                        Column(
-                            Modifier.fillMaxSize(),
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.Center,
-                        ) {
-                            LinearProgressIndicator()
-                            Text(
-                                "Signing you in…",
-                                style = MaterialTheme.typography.bodyMedium,
-                                textAlign = TextAlign.Center,
-                                modifier = Modifier.padding(top = 16.dp),
-                            )
-                        }
-                    }
+    Box(modifier.fillMaxSize()) {
+        when (val s = state) {
+            is LoginUiState.Error -> ErrorState(errorMessage(s.kind, s.message), onRetry = viewModel::retry)
+            else -> {
+                LoginWebView(onToken = viewModel::onTokenCaptured)
+                if (s is LoginUiState.Verifying) {
+                    VerifyingOverlay()
                 }
             }
         }
+    }
+}
+
+/** Centered progress overlay shown while the captured token is being verified. */
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
+@Composable
+private fun VerifyingOverlay() {
+    Column(
+        Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+    ) {
+        LoadingIndicator()
+        Text(
+            stringResource(R.string.signin_verifying),
+            style = MaterialTheme.typography.bodyMedium,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(top = 16.dp),
+        )
     }
 }
 
@@ -126,4 +138,24 @@ private fun LoginWebView(onToken: (String) -> Unit) {
             }
         },
     )
+}
+
+// --- Previews ---
+// The SignIn state hosts a live WebView, which cannot render in a preview; only the
+// verifying overlay and error states are previewed.
+
+@Preview(locale = "vi", showBackground = true)
+@Composable
+private fun LoginVerifyingPreview() {
+    EUetTheme {
+        VerifyingOverlay()
+    }
+}
+
+@Preview(locale = "vi", showBackground = true)
+@Composable
+private fun LoginErrorPreview() {
+    EUetTheme {
+        ErrorState(errorMessage(ErrorKind.SIGN_IN_STUDENTHUB, ""), onRetry = {})
+    }
 }

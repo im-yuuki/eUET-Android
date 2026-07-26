@@ -15,6 +15,10 @@ splashscreen = "1.0.1"
 
 # Compose
 composeBom = "2025.10.00"
+# M3 Expressive (MaterialExpressiveTheme, LoadingIndicator) is internal in the 1.4.x stables the
+# BOM pins; the 1.5.0 alphas are where those APIs are public. Drop this override once a stable
+# material3 ships them.
+material3 = "1.5.0-alpha24"
 
 # Navigation
 navigationCompose = "2.9.8"
@@ -26,6 +30,9 @@ kotlinxSerialization = "1.9.0"
 
 # Persistence
 datastore = "1.1.7"
+
+# Custom Tabs (invoice / syllabus links)
+browser = "1.9.0"
 
 # Coroutines
 coroutines = "1.10.2"
@@ -54,7 +61,7 @@ compose-ui = { group = "androidx.compose.ui", name = "ui" }
 compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
 compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
 
 # Navigation
@@ -69,6 +76,9 @@ kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 
 # Persistence
 datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
+
+# Custom Tabs
+browser = { group = "androidx.browser", name = "browser", version.ref = "browser" }
 
 # Coroutines
 coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }

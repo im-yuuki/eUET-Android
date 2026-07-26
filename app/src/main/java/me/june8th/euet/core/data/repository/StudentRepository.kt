@@ -2,6 +2,7 @@ package me.june8th.euet.core.data.repository
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
+import me.june8th.euet.core.common.ErrorKind
 import me.june8th.euet.core.common.NetworkResult
 import me.june8th.euet.core.common.map
 import me.june8th.euet.core.common.safeApiCall
@@ -55,7 +56,10 @@ class StudentRepository(
 
     suspend fun getNotifications(page: Int = 0): NetworkResult<List<AppNotification>> {
         val code = session.studentCode.first()
-            ?: return NetworkResult.Error("No student code available. Try signing in again.")
+            ?: return NetworkResult.Error(
+                "No student code available. Try signing in again.",
+                kind = ErrorKind.SESSION_EXPIRED,
+            )
         return safeApiCall { api.getNotifications(code, page).content.map { it.toDomain() } }
     }
 

@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import me.june8th.euet.core.common.ErrorKind
 import me.june8th.euet.core.common.NetworkResult
 import me.june8th.euet.core.data.repository.AuthRepository
 
@@ -13,7 +14,7 @@ sealed interface LoginUiState {
     data object SignIn : LoginUiState
     data object Verifying : LoginUiState
     data object Success : LoginUiState
-    data class Error(val message: String) : LoginUiState
+    data class Error(val message: String, val kind: ErrorKind = ErrorKind.UNKNOWN) : LoginUiState
 }
 
 class LoginViewModel(
@@ -35,7 +36,7 @@ class LoginViewModel(
                 is NetworkResult.Success -> _uiState.value = LoginUiState.Success
                 is NetworkResult.Error -> {
                     handled = false
-                    _uiState.value = LoginUiState.Error(result.message)
+                    _uiState.value = LoginUiState.Error(result.message, result.kind)
                 }
             }
         }

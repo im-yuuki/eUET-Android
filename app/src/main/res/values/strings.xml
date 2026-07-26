@@ -1,3 +1,216 @@
 <resources>
+    <!-- App name: intentionally not localized. -->
     <string name="app_name">eUET</string>
+
+    <!-- Common actions & states -->
+    <string name="action_retry">Thử lại</string>
+    <string name="action_cancel">Hủy</string>
+    <string name="action_back">Quay lại</string>
+    <string name="error_title">Không tải được</string>
+    <string name="empty_title_default">Chưa có dữ liệu</string>
+
+    <!-- Localized copy for the common error kinds emitted by the data layer -->
+    <string name="error_network">Không có kết nối mạng. Kiểm tra mạng và thử lại.</string>
+    <string name="error_session_expired">Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.</string>
+    <string name="error_forbidden">Bạn không có quyền truy cập nội dung này.</string>
+    <string name="error_not_found">Không tìm thấy dữ liệu.</string>
+    <string name="error_server">Máy chủ đang gặp sự cố. Vui lòng thử lại sau.</string>
+    <string name="error_bad_credentials">Sai mã sinh viên hoặc mật khẩu.</string>
+    <string name="error_captcha_rejected">Mã xác nhận không đúng hoặc đã hết hạn. Mã mới đã sẵn sàng, hãy thử lại.</string>
+    <string name="error_canvas_token_rejected">Canvas từ chối token này. Hãy tạo token mới và thử lại.</string>
+    <string name="error_sign_in_daotao">Đăng nhập cổng đào tạo ĐHQGHN để xem mục này.</string>
+    <string name="error_sign_in_studenthub">Đăng nhập StudentHub để xem mục này.</string>
+    <string name="error_connect_canvas">Kết nối Canvas để xem mục này.</string>
+
+    <!-- Bottom navigation -->
+    <string name="nav_home">Trang chủ</string>
+    <string name="nav_timetable">Lịch</string>
+    <string name="nav_grades">Kết quả</string>
+    <string name="nav_more">Thêm</string>
+
+    <!-- Screen titles -->
+    <string name="title_timetable">Thời khóa biểu</string>
+    <string name="title_grades">Kết quả học tập</string>
+    <string name="title_more">Thêm</string>
+    <string name="title_profile">Hồ sơ</string>
+    <string name="title_exams">Lịch thi</string>
+    <string name="title_notifications">Thông báo</string>
+    <string name="title_tuition">Học phí</string>
+    <string name="title_canvas">Canvas</string>
+    <string name="title_training">Điểm rèn luyện</string>
+    <string name="title_registration">Đăng ký học phần</string>
+    <string name="title_documents">Tài liệu</string>
+    <string name="title_settings">Cài đặt</string>
+
+    <!-- Home -->
+    <string name="home_greeting_name">Xin chào, %1$s 👋</string>
+    <string name="home_greeting">Chào mừng trở lại 👋</string>
+    <string name="home_tagline">Tổng quan ngày hôm nay của bạn.</string>
+    <string name="home_today_classes">Lịch học hôm nay</string>
+    <string name="home_no_classes">Hôm nay không có lịch học 🎉</string>
+    <string name="home_quick_access">Truy cập nhanh</string>
+    <string name="stat_cpa">CPA</string>
+    <string name="stat_credits">Tín chỉ</string>
+
+    <!-- Periods & weekdays -->
+    <string name="period_single">Tiết %1$d</string>
+    <string name="period_range">Tiết %1$d–%2$d</string>
+    <string name="weekday_monday">Thứ Hai</string>
+    <string name="weekday_tuesday">Thứ Ba</string>
+    <string name="weekday_wednesday">Thứ Tư</string>
+    <string name="weekday_thursday">Thứ Năm</string>
+    <string name="weekday_friday">Thứ Sáu</string>
+    <string name="weekday_saturday">Thứ Bảy</string>
+    <string name="weekday_sunday">Chủ nhật</string>
+    <string name="weekday_unknown">Ngày %1$d</string>
+
+    <!-- Timetable -->
+    <string name="timetable_empty">Không có lịch học trong kỳ này</string>
+
+    <!-- Grades -->
+    <string name="grades_empty">Chưa có điểm</string>
+    <string name="grades_stat_total">Tổng</string>
+    <string name="course_code_credits">%1$s · %2$s tín chỉ</string>
+
+    <!-- More -->
+    <string name="more_profile_subtitle">Thông tin sinh viên của bạn</string>
+    <string name="more_exams_subtitle">Lịch thi, phòng thi và số báo danh</string>
+    <string name="more_notifications_subtitle">Thông báo và tin tức</string>
+    <string name="more_tuition_subtitle">Khoản thu và trạng thái thanh toán</string>
+    <string name="more_canvas_subtitle">Khóa học và bài tập</string>
+    <string name="more_training_subtitle">Điểm rèn luyện và hoạt động</string>
+    <string name="more_registration_subtitle">Đăng ký môn học</string>
+    <string name="more_documents_subtitle">Đề cương và biểu mẫu</string>
+    <string name="more_settings_subtitle">Tùy chọn ứng dụng</string>
+
+    <!-- Exams -->
+    <string name="exams_empty">Không có lịch thi</string>
+    <string name="exam_fallback_title">Bài thi</string>
+    <string name="exam_seat">SBD %1$s</string>
+
+    <!-- Notifications -->
+    <string name="notifications_empty">Chưa có thông báo</string>
+    <string name="notifications_news">Tin tức</string>
+    <string name="notifications_announcements">Thông báo</string>
+
+    <!-- Tuition -->
+    <string name="tuition_empty">Chưa có khoản thu</string>
+    <string name="tuition_outstanding">Còn phải nộp</string>
+    <string name="tuition_amount">Số tiền</string>
+    <string name="tuition_remaining">Còn lại</string>
+    <string name="tuition_view_invoice">Xem hóa đơn</string>
+
+    <!-- Profile -->
+    <string name="profile_student_code">Mã sinh viên</string>
+    <string name="profile_email">Email trường</string>
+    <string name="profile_class">Lớp khóa học</string>
+    <string name="profile_major">Ngành</string>
+    <string name="profile_program">Chương trình</string>
+
+    <!-- Canvas -->
+    <string name="canvas_disconnect">Ngắt kết nối Canvas</string>
+    <string name="canvas_empty">Chưa có dữ liệu từ Canvas</string>
+    <string name="canvas_connect_title">Kết nối tài khoản Canvas</string>
+    <string name="canvas_connect_description">Xem khóa học, bài tập sắp đến hạn, bài chưa nộp và hộp thư chưa đọc từ Canvas của UET (portal.uet.vnu.edu.vn).</string>
+    <string name="canvas_access_token">Access token</string>
+    <string name="canvas_connecting">Đang kết nối…</string>
+    <string name="canvas_connect">Kết nối</string>
+    <string name="canvas_token_help">Để tạo token, đăng nhập portal.uet.vnu.edu.vn trên trình duyệt, mở Tài khoản → Cài đặt, bấm \"+ New access token\" rồi sao chép và dán vào đây.</string>
+    <string name="canvas_token_storage">Token được lưu mã hóa trên thiết bị này và chỉ được gửi đến Canvas của UET.</string>
+    <plurals name="canvas_missing_submissions">
+        <item quantity="other">%1$d bài tập chưa nộp</item>
+    </plurals>
+    <string name="canvas_missing_due">%1$s — hạn nộp %2$s</string>
+    <string name="canvas_more_items">và %1$d mục khác…</string>
+    <plurals name="canvas_unread_inbox">
+        <item quantity="other">%1$d tin nhắn chưa đọc</item>
+    </plurals>
+    <string name="canvas_active_courses">Khóa học</string>
+    <string name="canvas_upcoming">Sắp tới</string>
+    <string name="canvas_submitted">Đã nộp</string>
+
+    <!-- Sign-in -->
+    <string name="signin_title">Đăng nhập eUET</string>
+    <string name="signin_studenthub">StudentHub</string>
+    <string name="signin_daotao">Cổng đào tạo ĐHQGHN</string>
+    <string name="signin_intro">Kết nối một tài khoản để bắt đầu.</string>
+    <string name="signin_studenthub_subtitle">Thời khóa biểu, học phí, thông báo</string>
+    <string name="signin_daotao_subtitle">Điểm số, lịch thi, điểm rèn luyện</string>
+    <string name="signin_add_later">Bạn có thể thêm tài khoản còn lại trong Cài đặt.</string>
+    <string name="signin_verifying">Đang đăng nhập…</string>
+    <string name="signin_studenthub_method_intro">Chọn cách đăng nhập StudentHub.</string>
+    <string name="signin_studenthub_google">Đăng nhập bằng Google</string>
+    <string name="signin_studenthub_google_subtitle">Dùng tài khoản @vnu.edu.vn qua trình duyệt</string>
+    <string name="signin_studenthub_password">Đăng nhập bằng mã sinh viên</string>
+    <string name="signin_studenthub_password_subtitle">Mã sinh viên, mật khẩu và mã xác nhận</string>
+
+    <!-- StudentHub student-ID login -->
+    <string name="studenthub_login_title">Đăng nhập StudentHub bằng mã sinh viên</string>
+    <string name="studenthub_login_description">Nhập mã sinh viên, mật khẩu và mã xác nhận hiển thị bên dưới.</string>
+    <string name="studenthub_student_id">Mã sinh viên</string>
+    <string name="studenthub_password">Mật khẩu</string>
+    <string name="studenthub_captcha">Mã xác nhận</string>
+    <string name="studenthub_captcha_image">Ảnh mã xác nhận</string>
+    <string name="studenthub_captcha_refresh">Lấy mã xác nhận mới</string>
+    <string name="studenthub_captcha_unavailable">Chưa có mã</string>
+    <string name="studenthub_remember_password">Ghi nhớ mật khẩu trên thiết bị này</string>
+    <string name="studenthub_signing_in">Đang đăng nhập…</string>
+    <string name="studenthub_sign_in">Đăng nhập</string>
+    <string name="studenthub_password_note">Mật khẩu được lưu mã hóa trên thiết bị này để điền sẵn khi cần đăng nhập lại. StudentHub luôn yêu cầu mã xác nhận nên ứng dụng không thể tự gia hạn phiên đăng nhập.</string>
+
+    <!-- VNU portal login -->
+    <string name="daotao_login_title">Đăng nhập bằng tài khoản cổng đào tạo ĐHQGHN</string>
+    <string name="daotao_login_description">Cung cấp điểm số, lịch thi và điểm rèn luyện từ daotao.vnu.edu.vn.</string>
+    <string name="daotao_student_id">Mã sinh viên</string>
+    <string name="daotao_password">Mật khẩu</string>
+    <string name="daotao_signing_in">Đang đăng nhập…</string>
+    <string name="daotao_sign_in">Đăng nhập</string>
+    <string name="daotao_password_note">Mật khẩu được lưu mã hóa trên thiết bị này để ứng dụng tự gia hạn phiên đăng nhập mà không cần hỏi lại.</string>
+
+    <!-- Data-source conflicts -->
+    <string name="conflict_banner_title">Dữ liệu khác nhau giữa các nguồn</string>
+    <plurals name="conflict_count">
+        <item quantity="other">%1$d khác biệt</item>
+    </plurals>
+    <string name="conflict_badge_description">Xem khác biệt giữa các nguồn</string>
+    <string name="conflict_sheet_title">Khác biệt dữ liệu</string>
+    <string name="conflict_only_in">Chỉ có trong %1$s</string>
+    <string name="source_studenthub">StudentHub</string>
+    <string name="source_vnu_portal">Cổng VNU</string>
+    <string name="field_course_name">Tên học phần</string>
+    <string name="field_credits">Số tín chỉ</string>
+    <string name="field_score10">Điểm hệ 10</string>
+    <string name="field_score4">Điểm hệ 4</string>
+    <string name="field_letter">Điểm chữ</string>
+    <string name="field_exam_date">Ngày thi</string>
+    <string name="field_exam_time">Ca thi</string>
+    <string name="field_exam_room">Phòng thi</string>
+    <string name="field_exam_seat">Số báo danh</string>
+    <string name="field_exam_method">Hình thức thi</string>
+    <string name="field_full_name">Họ và tên</string>
+
+    <!-- Settings -->
+    <string name="settings_data_sources">Nguồn dữ liệu</string>
+    <string name="settings_data_sources_hint">Nguồn được ưu tiên khi cả hai tài khoản cùng cung cấp hồ sơ, điểm và lịch thi.</string>
+    <string name="settings_about">Giới thiệu</string>
+    <string name="settings_version">eUET · phiên bản %1$s</string>
+    <string name="settings_app_description">Cổng thông tin sinh viên UET — thời khóa biểu, điểm số, lịch thi và hơn thế nữa.</string>
+    <string name="settings_sign_out">Đăng xuất</string>
+    <string name="settings_sign_out_confirm_title">Đăng xuất?</string>
+    <string name="settings_sign_out_confirm_text">Bạn sẽ cần đăng nhập lại để xem dữ liệu.</string>
+
+    <!-- Training points -->
+    <string name="training_empty">Chưa có dữ liệu</string>
+    <string name="training_term_gpa">GPA kỳ %1$s</string>
+    <string name="training_credits">%1$s tín chỉ</string>
+    <string name="training_no_grades">Chưa có điểm</string>
+    <string name="training_conduct">Rèn luyện</string>
+    <string name="training_footer">Điểm rèn luyện chưa khả dụng từ cổng đào tạo. Hiện hiển thị điểm trung bình theo kỳ.</string>
+
+    <!-- Registration -->
+    <string name="registration_empty_title">Đăng ký học phần</string>
+    <string name="registration_empty_detail">Chương trình đào tạo, thời gian đăng ký và cố vấn học tập sẽ có trong bản cập nhật sau.</string>
+
+    <!-- Documents -->
+    <string name="documents_empty">Chưa có tài liệu</string>
 </resources>

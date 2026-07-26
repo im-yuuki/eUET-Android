@@ -15,6 +15,8 @@ import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.stringResource
+import me.june8th.euet.R
 
 /** Standard secondary-screen scaffold: back arrow, title, and a scroll-collapsing top bar. */
 @OptIn(ExperimentalMaterial3Api::class)
@@ -35,7 +37,10 @@ fun DetailScaffold(
                 navigationIcon = {
                     if (onBack != null) {
                         IconButton(onClick = onBack) {
-                            Icon(Icons.AutoMirrored.Rounded.ArrowBack, contentDescription = "Back")
+                            Icon(
+                                Icons.AutoMirrored.Rounded.ArrowBack,
+                                contentDescription = stringResource(R.string.action_back),
+                            )
                         }
                     }
                 },

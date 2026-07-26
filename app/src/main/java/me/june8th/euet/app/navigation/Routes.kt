@@ -1,5 +1,6 @@
 package me.june8th.euet.app.navigation
 
+import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.CalendarMonth
 import androidx.compose.material.icons.rounded.Grade
@@ -7,6 +8,7 @@ import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.ui.graphics.vector.ImageVector
 import kotlinx.serialization.Serializable
+import me.june8th.euet.R
 
 /** Type-safe navigation routes. */
 object Route {
@@ -30,12 +32,12 @@ object Route {
 
 /** The four bottom-bar destinations. */
 enum class TopLevelDestination(
-    val label: String,
+    @param:StringRes val labelRes: Int,
     val icon: ImageVector,
     val route: Any,
 ) {
-    HOME("Home", Icons.Rounded.Home, Route.Home),
-    TIMETABLE("Timetable", Icons.Rounded.CalendarMonth, Route.Timetable),
-    GRADES("Grades", Icons.Rounded.Grade, Route.Grades),
-    MORE("More", Icons.Rounded.Menu, Route.More),
+    HOME(R.string.nav_home, Icons.Rounded.Home, Route.Home),
+    TIMETABLE(R.string.nav_timetable, Icons.Rounded.CalendarMonth, Route.Timetable),
+    GRADES(R.string.nav_grades, Icons.Rounded.Grade, Route.Grades),
+    MORE(R.string.nav_more, Icons.Rounded.Menu, Route.More),
 }

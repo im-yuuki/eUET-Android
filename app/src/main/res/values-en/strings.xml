@@ -1,0 +1,218 @@
+<resources>
+    <string name="app_name">eUET</string>
+
+    <!-- Common actions & states -->
+    <string name="action_retry">Retry</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_back">Back</string>
+    <string name="error_title">Couldn\'t load</string>
+    <string name="empty_title_default">Nothing here yet</string>
+
+    <!-- Localized copy for the common error kinds emitted by the data layer -->
+    <string name="error_network">No connection. Check your network and try again.</string>
+    <string name="error_session_expired">Your session has expired. Please sign in again.</string>
+    <string name="error_forbidden">You don\'t have access to this.</string>
+    <string name="error_not_found">Not found.</string>
+    <string name="error_server">The server is having trouble. Try again later.</string>
+    <string name="error_bad_credentials">Incorrect student ID or password.</string>
+    <string name="error_captcha_rejected">That captcha was wrong or has expired. A new one is ready — try again.</string>
+    <string name="error_canvas_token_rejected">Canvas rejected that token. Generate a new one and try again.</string>
+    <string name="error_sign_in_daotao">Sign in to the VNU portal to see this.</string>
+    <string name="error_sign_in_studenthub">Sign in to StudentHub to see this.</string>
+    <string name="error_connect_canvas">Connect Canvas to see this.</string>
+
+    <!-- Bottom navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_timetable">Timetable</string>
+    <string name="nav_grades">Grades</string>
+    <string name="nav_more">More</string>
+
+    <!-- Screen titles -->
+    <string name="title_timetable">Timetable</string>
+    <string name="title_grades">Grades</string>
+    <string name="title_more">More</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_exams">Exams</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_tuition">Tuition</string>
+    <string name="title_canvas">Canvas</string>
+    <string name="title_training">Training points</string>
+    <string name="title_registration">Registration</string>
+    <string name="title_documents">Documents</string>
+    <string name="title_settings">Settings</string>
+
+    <!-- Home -->
+    <string name="home_greeting_name">Hi, %1$s 👋</string>
+    <string name="home_greeting">Welcome back 👋</string>
+    <string name="home_tagline">Here\'s your day at a glance.</string>
+    <string name="home_today_classes">Today\'s classes</string>
+    <string name="home_no_classes">No classes today 🎉</string>
+    <string name="home_quick_access">Quick access</string>
+    <string name="stat_cpa">CPA</string>
+    <string name="stat_credits">Credits</string>
+
+    <!-- Periods & weekdays -->
+    <string name="period_single">Period %1$d</string>
+    <string name="period_range">Periods %1$d–%2$d</string>
+    <string name="weekday_monday">Monday</string>
+    <string name="weekday_tuesday">Tuesday</string>
+    <string name="weekday_wednesday">Wednesday</string>
+    <string name="weekday_thursday">Thursday</string>
+    <string name="weekday_friday">Friday</string>
+    <string name="weekday_saturday">Saturday</string>
+    <string name="weekday_sunday">Sunday</string>
+    <string name="weekday_unknown">Day %1$d</string>
+
+    <!-- Timetable -->
+    <string name="timetable_empty">No classes this term</string>
+
+    <!-- Grades -->
+    <string name="grades_empty">No grades yet</string>
+    <string name="grades_stat_total">Total</string>
+    <string name="course_code_credits">%1$s · %2$s cr</string>
+
+    <!-- More -->
+    <string name="more_profile_subtitle">Your student information</string>
+    <string name="more_exams_subtitle">Schedule, rooms &amp; seats</string>
+    <string name="more_notifications_subtitle">Announcements &amp; news</string>
+    <string name="more_tuition_subtitle">Bills &amp; payment status</string>
+    <string name="more_canvas_subtitle">Courses &amp; assignments</string>
+    <string name="more_training_subtitle">Conduct &amp; activity score</string>
+    <string name="more_registration_subtitle">Course registration</string>
+    <string name="more_documents_subtitle">Syllabus &amp; forms</string>
+    <string name="more_settings_subtitle">App preferences</string>
+
+    <!-- Exams -->
+    <string name="exams_empty">No exams scheduled</string>
+    <string name="exam_fallback_title">Exam</string>
+    <string name="exam_seat">Seat %1$s</string>
+
+    <!-- Notifications -->
+    <string name="notifications_empty">No announcements</string>
+    <string name="notifications_news">News</string>
+    <string name="notifications_announcements">Announcements</string>
+
+    <!-- Tuition -->
+    <string name="tuition_empty">No bills</string>
+    <string name="tuition_outstanding">Outstanding balance</string>
+    <string name="tuition_amount">Amount</string>
+    <string name="tuition_remaining">Remaining</string>
+    <string name="tuition_view_invoice">View invoice</string>
+
+    <!-- Profile -->
+    <string name="profile_student_code">Student code</string>
+    <string name="profile_email">School email</string>
+    <string name="profile_class">Class</string>
+    <string name="profile_major">Major</string>
+    <string name="profile_program">Program</string>
+
+    <!-- Canvas -->
+    <string name="canvas_disconnect">Disconnect Canvas</string>
+    <string name="canvas_empty">Nothing from Canvas yet</string>
+    <string name="canvas_connect_title">Connect your Canvas account</string>
+    <string name="canvas_connect_description">Shows your active courses, upcoming assignments, missing submissions and unread inbox from UET\'s Canvas (portal.uet.vnu.edu.vn).</string>
+    <string name="canvas_access_token">Access token</string>
+    <string name="canvas_connecting">Connecting…</string>
+    <string name="canvas_connect">Connect</string>
+    <string name="canvas_token_help">To generate a token, sign in to portal.uet.vnu.edu.vn in a browser, open Account → Settings, press \"+ New access token\", then copy it here.</string>
+    <string name="canvas_token_storage">The token is stored encrypted on this device and only ever sent to UET\'s Canvas.</string>
+    <plurals name="canvas_missing_submissions">
+        <item quantity="one">%1$d missing submission</item>
+        <item quantity="other">%1$d missing submissions</item>
+    </plurals>
+    <string name="canvas_missing_due">%1$s — was due %2$s</string>
+    <string name="canvas_more_items">and %1$d more…</string>
+    <plurals name="canvas_unread_inbox">
+        <item quantity="one">%1$d unread inbox message</item>
+        <item quantity="other">%1$d unread inbox messages</item>
+    </plurals>
+    <string name="canvas_active_courses">Active courses</string>
+    <string name="canvas_upcoming">Upcoming</string>
+    <string name="canvas_submitted">Submitted</string>
+
+    <!-- Sign-in -->
+    <string name="signin_title">Sign in to eUET</string>
+    <string name="signin_studenthub">StudentHub</string>
+    <string name="signin_daotao">VNU portal</string>
+    <string name="signin_intro">Connect an account to get started.</string>
+    <string name="signin_studenthub_subtitle">Timetable, tuition, notifications</string>
+    <string name="signin_daotao_subtitle">Grades, exam schedule, training points</string>
+    <string name="signin_add_later">You can add the other account later in Settings.</string>
+    <string name="signin_verifying">Signing you in…</string>
+    <string name="signin_studenthub_method_intro">Choose how to sign in to StudentHub.</string>
+    <string name="signin_studenthub_google">Sign in with Google</string>
+    <string name="signin_studenthub_google_subtitle">Use your @vnu.edu.vn account in a browser</string>
+    <string name="signin_studenthub_password">Sign in with student ID</string>
+    <string name="signin_studenthub_password_subtitle">Student ID, password and a captcha</string>
+
+    <!-- StudentHub student-ID login -->
+    <string name="studenthub_login_title">Sign in to StudentHub with your student ID</string>
+    <string name="studenthub_login_description">Enter your student ID, your password and the captcha shown below.</string>
+    <string name="studenthub_student_id">Student ID</string>
+    <string name="studenthub_password">Password</string>
+    <string name="studenthub_captcha">Captcha</string>
+    <string name="studenthub_captcha_image">Captcha image</string>
+    <string name="studenthub_captcha_refresh">Get a new captcha</string>
+    <string name="studenthub_captcha_unavailable">No captcha</string>
+    <string name="studenthub_remember_password">Remember my password on this device</string>
+    <string name="studenthub_signing_in">Signing in…</string>
+    <string name="studenthub_sign_in">Sign in</string>
+    <string name="studenthub_password_note">Your password is stored encrypted on this device so the form is prefilled next time. StudentHub always asks for a captcha, so the app can\'t renew the session on its own.</string>
+
+    <!-- VNU portal login -->
+    <string name="daotao_login_title">Sign in with your VNU portal account</string>
+    <string name="daotao_login_description">Gives you grades, exam schedule and training points from daotao.vnu.edu.vn.</string>
+    <string name="daotao_student_id">Student ID</string>
+    <string name="daotao_password">Password</string>
+    <string name="daotao_signing_in">Signing in…</string>
+    <string name="daotao_sign_in">Sign in</string>
+    <string name="daotao_password_note">Your password is stored encrypted on this device so the app can renew the portal session without asking again.</string>
+
+    <!-- Data-source conflicts -->
+    <string name="conflict_banner_title">Data differs between sources</string>
+    <plurals name="conflict_count">
+        <item quantity="one">%1$d difference</item>
+        <item quantity="other">%1$d differences</item>
+    </plurals>
+    <string name="conflict_badge_description">View source differences</string>
+    <string name="conflict_sheet_title">Data differences</string>
+    <string name="conflict_only_in">Only in %1$s</string>
+    <string name="source_studenthub">StudentHub</string>
+    <string name="source_vnu_portal">VNU portal</string>
+    <string name="field_course_name">Course name</string>
+    <string name="field_credits">Credits</string>
+    <string name="field_score10">10-scale score</string>
+    <string name="field_score4">4-scale score</string>
+    <string name="field_letter">Letter grade</string>
+    <string name="field_exam_date">Exam date</string>
+    <string name="field_exam_time">Exam time</string>
+    <string name="field_exam_room">Room</string>
+    <string name="field_exam_seat">Seat number</string>
+    <string name="field_exam_method">Method</string>
+    <string name="field_full_name">Full name</string>
+
+    <!-- Settings -->
+    <string name="settings_data_sources">Data sources</string>
+    <string name="settings_data_sources_hint">Which account wins when both provide your profile, grades and exams.</string>
+    <string name="settings_about">About</string>
+    <string name="settings_version">eUET · version %1$s</string>
+    <string name="settings_app_description">Your UET student portal — timetable, grades, exams and more.</string>
+    <string name="settings_sign_out">Sign out</string>
+    <string name="settings_sign_out_confirm_title">Sign out?</string>
+    <string name="settings_sign_out_confirm_text">You\'ll need to sign in again to see your data.</string>
+
+    <!-- Training points -->
+    <string name="training_empty">No results yet</string>
+    <string name="training_term_gpa">Term GPA %1$s</string>
+    <string name="training_credits">%1$s cr</string>
+    <string name="training_no_grades">No graded courses</string>
+    <string name="training_conduct">Conduct</string>
+    <string name="training_footer">Conduct scores aren\'t available from the portal yet, so term GPA is shown instead.</string>
+
+    <!-- Registration -->
+    <string name="registration_empty_title">Course registration</string>
+    <string name="registration_empty_detail">Your program, registration window and advising are coming in a future update.</string>
+
+    <!-- Documents -->
+    <string name="documents_empty">No documents found</string>
+</resources>
