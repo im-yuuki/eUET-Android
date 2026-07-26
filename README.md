@@ -1,28 +1,34 @@
 # eUET (Android)
 
 A student-companion app for **VNU University of Engineering and Technology**, built with
-**Jetpack Compose + Material 3** (dynamic color / Material You) for a Pixel-native feel.
+**Jetpack Compose + Material 3 Expressive** (dynamic color / Material You) for a Pixel-native feel.
 
 It aggregates the UET/VNU student backends into one app:
 
 - **UET StudentHub** (`studenthub.uet.edu.vn`) — bearer-token JSON API (primary source).
-- **VNU daotao** (`daotao.vnu.edu.vn`) — classic-ASP portal, HTML-scraped *(planned)*.
-- **Canvas** (`portal.uet.vnu.edu.vn`) — Canvas REST API *(planned)*.
+- **VNU daotao** (`daotao.vnu.edu.vn`) — classic-ASP portal, HTML-scraped (login + scrapers ported
+  from the iOS app's live-verified recipes; fallback source for profile/grades/exams).
+- **Canvas** (`portal.uet.vnu.edu.vn`) — Canvas REST API via a user-supplied Access Token.
 
 ## Features
 
 | Area | Status |
 |---|---|
-| Sign in (Google, via in-app WebView token capture) | ✅ |
+| Sign in — StudentHub (student ID + password + captcha, **or** Google via WebView) · VNU credentials · Canvas token | ✅ |
 | Home dashboard (greeting, CPA, today's classes) | ✅ |
 | Profile | ✅ |
 | Timetable (per term) | ✅ |
 | Grades + GPA | ✅ |
 | Exams | ✅ |
-| Notifications + News | ✅ |
-| Tuition / bills | ✅ |
+| Notifications (infinite scroll) + News (images) | ✅ |
+| Tuition / bills (invoice via Custom Tab) | ✅ |
+| Canvas (courses, planner, missing, unread) | ✅ |
+| Training points (term GPA; conduct scores pending portal capture) | ✅ |
+| Documents (VNU syllabus PDFs) | ✅ |
+| Offline cache + multi-provider aggregation | ✅ |
+| Localization (vi base + en) | ✅ |
 | Settings + sign out | ✅ |
-| Canvas, Training points, Registration, Documents | 🚧 planned |
+| Course registration (dktn) | 🚧 deferred (matched with iOS) |
 
 ## Architecture
 
@@ -44,7 +50,9 @@ Storage is DataStore. Auth attaches a bearer token via an OkHttp interceptor.
 ./gradlew installDebug            # install on a connected device/emulator
 ```
 
-Then launch the app and sign in with your StudentHub Google account in the WebView.
+Then launch the app and connect a provider: StudentHub (Google sign-in in the WebView), the VNU
+portal (student ID + password), and/or Canvas (paste an Access Token from Canvas → Account →
+Settings).
 
 > **Live data:** the StudentHub auth/response shapes were reverse-engineered from HAR notes and are
 > not yet verified against the live API. DTOs are lenient (nullable + `ignoreUnknownKeys`). If a
