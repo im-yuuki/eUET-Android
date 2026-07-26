@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit
 
 /**
  * Manual dependency container — the single owner of app-scoped singletons. Built once in
- * [me.june8th.euet.app.EUetApplication] and exposed to Compose via [LocalAppContainer].
+ * [me.june8th.euet.app.App] and exposed to Compose via [LocalAppContainer].
  *
  * (Manual DI rather than Hilt: this toolchain's AGP built-in Kotlin rejects KAPT and no KSP build
  * exists for Kotlin 2.4.0, so no annotation processor is available.)

@@ -5,7 +5,10 @@ import me.june8th.euet.core.datastore.SessionManager
 import okhttp3.Interceptor
 import okhttp3.Response
 
-/** Attaches the StudentHub bearer token to every outgoing request that lacks one. */
+/**
+ * Attaches the StudentHub bearer token to every outgoing request that lacks one, and invalidates
+ * the stored session when the server rejects it.
+ */
 class AuthInterceptor(
     private val session: SessionManager,
 ) : Interceptor {
@@ -19,6 +22,20 @@ class AuthInterceptor(
         } else {
             original
         }
-        return chain.proceed(request)
+
+        val response = chain.proceed(request)
+
+        // A 401 on a request we did authenticate means the captured token is no longer valid.
+        // There's no silent refresh path — the token comes from a WebView OAuth capture with no
+        // stored credentials — so drop it. RootViewModel observes `isLoggedIn`, so the app
+        // returns to the sign-in screen instead of leaving the user stranded on error states.
+        if (response.code == HTTP_UNAUTHORIZED && !token.isNullOrBlank()) {
+            runBlocking { session.clearStudentHubAuth() }
+        }
+        return response
+    }
+
+    private companion object {
+        const val HTTP_UNAUTHORIZED = 401
     }
 }

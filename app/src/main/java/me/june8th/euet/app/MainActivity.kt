@@ -15,7 +15,7 @@ class MainActivity : ComponentActivity() {
         installSplashScreen()
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
-        val container = (application as EUetApplication).container
+        val container = (application as App).container
         setContent {
             CompositionLocalProvider(LocalAppContainer provides container) {
                 EUetTheme {
