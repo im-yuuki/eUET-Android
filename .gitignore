@@ -1,5 +1,6 @@
 /build
 /captures
+/gradle/gradle-daemon-jvm.properties
 .externalNativeBuild
 .cxx
 local.properties
