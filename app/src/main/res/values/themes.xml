@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+      Compose draws the entire UI, so the platform ActionBar must be turned off or
+      it renders an extra opaque bar titled with @string/app_name above the
+      Scaffold. DayNight is used so the platform follows the system light/dark
+      setting, matching isSystemInDarkTheme() in ExpressiveAppTheme.
+
+      The window backgrounds are transparent because enableEdgeToEdge() lets
+      Compose draw behind the system bars; an opaque colour here would show
+      through as a band before the first frame.
+    -->
+    <style name="Theme.App" parent="@android:style/Theme.DeviceDefault.DayNight">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+
+</resources>

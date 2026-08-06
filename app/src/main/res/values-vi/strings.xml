@@ -2,6 +2,4 @@
 <resources>
     <string name="app_name">eUET</string>
     <string name="action_settings">Cài đặt</string>
-    <string name="next">Tiếp theo</string>
-    <string name="previous">Trước đó</string>
 </resources>
